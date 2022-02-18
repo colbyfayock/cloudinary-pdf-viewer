@@ -95,12 +95,12 @@ const Viewer = ({ src, width, height }) => {
 
   return (
     <>
-      <div className={styles.viewer} style={{
-        aspectRatio: `${width} / ${height}`
-      }}>
+      <div className={styles.viewer}>
         {slides.length > 0 && (
           <>
-            <ul className={styles.slides}>
+            <ul className={styles.slides} style={{
+              aspectRatio: `${width} / ${height}`
+            }}>
               {slides.map(({ src, pageNumber }) => {
                 return (
                   <li key={src}
