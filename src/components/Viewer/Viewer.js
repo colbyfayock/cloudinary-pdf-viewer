@@ -6,7 +6,7 @@ import styles from './Viewer.module.scss';
 
 const cld = new Cloudinary({
   cloud: {
-    cloudName: 'colbycloud'
+    cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
   },
   url: {
     secure: true
