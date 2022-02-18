@@ -19,6 +19,14 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
+        <header className={styles.header}>
+          <h1>Cloudinary PDF Viewer</h1>
+          <p>
+            <a href="https://github.com/colbyfayock/cloudinary-pdf-viewer">
+              View Source on GitHub
+            </a>
+          </p>
+        </header>
         <Viewer src={PDF} width="1500" height="844" />
       </main>
     </div>
