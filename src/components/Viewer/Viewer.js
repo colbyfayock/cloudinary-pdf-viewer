@@ -4,14 +4,7 @@ import { getFrame, getPage } from '@cloudinary/url-gen/actions/extract';
 
 import styles from './Viewer.module.scss';
 
-const cld = new Cloudinary({
-  cloud: {
-    cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
-  },
-  url: {
-    secure: true
-  }
-});
+let cld;
 
 function getPdfPage({ src, page }) {
   return cld.image(src)
@@ -22,7 +15,7 @@ function getPdfPage({ src, page }) {
     .toURL();
 }
 
-const Viewer = ({ src, width, height }) => {
+const Viewer = ({ src, width, height, cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME }) => {
   const [currentSlide, setCurrentSlide] = useState(1);
   const [pages = {}, setPages] = useState({});
   const [totalPages, setTotalPages] = useState();
@@ -35,6 +28,17 @@ const Viewer = ({ src, width, height }) => {
   });
 
   const hasNextSlide = slides.find(({ pageNumber }) => currentSlide + 1 === pageNumber);
+
+  useEffect(() => {
+    cld = new Cloudinary({
+      cloud: {
+        cloudName
+      },
+      url: {
+        secure: true
+      }
+    });
+  }, [])
 
   // Get the first page and refresh the
 
