@@ -17,6 +17,7 @@ function getPdfPage({ src, page }) {
   return cld.image(src)
     .setDeliveryType('fetch')
     .format('auto')
+    .quality('auto')
     .extract(getPage().byNumber(page))
     .toURL();
 }
