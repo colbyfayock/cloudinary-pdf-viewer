@@ -124,7 +124,9 @@ const Viewer = ({ src, width, height }) => {
                 <button onClick={handleOnNextSlide} disabled={totalPages === currentSlide || !hasNextSlide}>Next</button>
               </li>
               <li className={styles.controlsDownload}>
-                <a href={src} download target="_blank">Download Slides</a>
+                <a href={src} download target="_blank" rel="noreferrer">
+                  Download Slides
+                </a>
               </li>
             </ul>
           </>
