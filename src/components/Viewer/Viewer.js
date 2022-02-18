@@ -16,7 +16,7 @@ const cld = new Cloudinary({
 function getPdfPage({ src, page }) {
   return cld.image(src)
     .setDeliveryType('fetch')
-    .format('jpg')
+    .format('auto')
     .extract(getPage().byNumber(page))
     .toURL();
 }
@@ -32,6 +32,8 @@ const Viewer = ({ src, width, height }) => {
       pageNumber: parseInt(key)
     };
   });
+
+  const hasNextSlide = slides.find(({ pageNumber }) => currentSlide + 1 === pageNumber);
 
   // Get the first page and refresh the
 
@@ -114,15 +116,19 @@ const Viewer = ({ src, width, height }) => {
                 )
               })}
             </ul>
-            <p>
-              <button onClick={handleOnPrevSlide} disabled={currentSlide - 1 <= 0}>Prev</button>
-              <button onClick={handleOnNextSlide} disabled={totalPages === currentSlide}>Next</button>
-            </p>
+            <ul className={styles.controls}>
+              <li>
+                <button onClick={handleOnPrevSlide} disabled={currentSlide - 1 <= 0}>Prev</button>
+              </li>
+              <li>
+                <button onClick={handleOnNextSlide} disabled={totalPages === currentSlide || !hasNextSlide}>Next</button>
+              </li>
+              <li className={styles.controlsDownload}>
+                <a href={src} download target="_blank">Download Slides</a>
+              </li>
+            </ul>
           </>
         )}
-        <noscript>
-          <a href={src}>{ src }</a>
-        </noscript>
       </div>
     </>
   )

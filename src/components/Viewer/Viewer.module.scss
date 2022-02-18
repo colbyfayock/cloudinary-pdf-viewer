@@ -40,3 +40,31 @@
   }
 
 }
+
+.controls {
+
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 1em 0 0;
+
+  li {
+
+    margin: 0 .5em;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+  }
+
+}
+
+.controlsDownload {
+  flex-grow: 1;
+  text-align: right;
+}

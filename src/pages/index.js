@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 import Viewer from '../components/Viewer';
 
-import styles from '../styles/Home.module.css'
+import styles from '../styles/Home.module.scss'
 
 const PDF = 'https://colbyfayockcom.wpengine.com/wp-content/uploads/2022/02/TalksSiege-Media-Next.js.pdf';
 
